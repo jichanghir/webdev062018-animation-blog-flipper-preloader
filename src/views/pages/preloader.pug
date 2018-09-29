@@ -1,0 +1,18 @@
+extends ../main.layout.pug
+
+block variables
+  - var title = 'Preloader';
+
+block scripts
+  script(src='auth.bundle.js')
+
+block content
+
+    .imgs
+        each i in [10,9,8,7,6,5,4,3,2,1]
+            img(src=`/assets/images/mountains/l${i}.png`, alt="").imgs__img
+
+        .preloader#preloader
+            .preloader__spinner
+                .preloader__animation
+                .preloader__percent#preloader__percent 0%

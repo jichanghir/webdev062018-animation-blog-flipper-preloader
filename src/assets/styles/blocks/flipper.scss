@@ -1,0 +1,45 @@
+.flipper {
+    position: relative;
+
+    transition: transform 2s;
+    transform-style: preserve-3d;
+
+    &.rotate {
+        transform: rotateY(180deg);
+    }
+
+    .flipper__front, .flipper__back {
+        position: absolute;
+        top: 0;
+        left: 50%;
+
+        backface-visibility: hidden;
+    }
+
+    .flipper__front {
+        transform: translateX(-50%);
+    }
+
+    .flipper__back {
+        transform: rotateY(180deg) translateX(50%);
+    }
+
+    .flipper__front {
+        padding: 50px;
+        background: rgba(red, .3);
+    }
+
+    .flipper__back {
+        padding: 50px;
+        background: rgba(green, .3);
+    }
+
+
+}
+.flipper-rotate {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+
+    cursor: pointer;
+}

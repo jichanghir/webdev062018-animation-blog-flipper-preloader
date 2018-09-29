@@ -1,0 +1,54 @@
+extends ../main.layout.pug
+
+block variables
+  - var title = 'Блог';
+
+block scripts
+  script(src='blog.bundle.js')
+
+block content
+
+    //- include ../common/hero
+
+    -
+        var articles = [
+            {
+                title: 'Article1',
+                date: '12.07.2017',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero optio sint a saepe repellat! Sapiente alias quam amet assumenda obcaecati, quibusdam nisi dignissimos cum reiciendis ab sed doloribus nam eaque est impedit molestiae. In fugit sunt quia tenetur unde blanditiis quae voluptatum possimus, consectetur, similique debitis eos fugiat eligendi, saepe, dolorem placeat veniam. Iusto, illo dicta ipsam blanditiis eum molestias delectus quia veritatis. Voluptas facere nobis, neque temporibus, officia modi veritatis id deleniti mollitia soluta necessitatibus incidunt perspiciatis fugiat, a eum similique, nulla totam quasi dicta. Alias dolores cupiditate laborum voluptatem! Eius, minima placeat quam laborum repudiandae maxime nisi deserunt.'
+            },
+            {
+                title: 'Article2',
+                date: '12.07.2017',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero optio sint a saepe repellat! Sapiente alias quam amet assumenda obcaecati, quibusdam nisi dignissimos cum reiciendis ab sed doloribus nam eaque est impedit molestiae. In fugit sunt quia tenetur unde blanditiis quae voluptatum possimus, consectetur, similique debitis eos fugiat eligendi, saepe, dolorem placeat veniam. Iusto, illo dicta ipsam blanditiis eum molestias delectus quia veritatis. Voluptas facere nobis, neque temporibus, officia modi veritatis id deleniti mollitia soluta necessitatibus incidunt perspiciatis fugiat, a eum similique, nulla totam quasi dicta. Alias dolores cupiditate laborum voluptatem! Eius, minima placeat quam laborum repudiandae maxime nisi deserunt.'
+            },
+            {
+                title: 'Article3',
+                date: '12.07.2017',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero optio sint a saepe repellat! Sapiente alias quam amet assumenda obcaecati, quibusdam nisi dignissimos cum reiciendis ab sed doloribus nam eaque est impedit molestiae. In fugit sunt quia tenetur unde blanditiis quae voluptatum possimus, consectetur, similique debitis eos fugiat eligendi, saepe, dolorem placeat veniam. Iusto, illo dicta ipsam blanditiis eum molestias delectus quia veritatis. Voluptas facere nobis, neque temporibus, officia modi veritatis id deleniti mollitia soluta necessitatibus incidunt perspiciatis fugiat, a eum similique, nulla totam quasi dicta. Alias dolores cupiditate laborum voluptatem! Eius, minima placeat quam laborum repudiandae maxime nisi deserunt.'
+            },
+        ];
+
+    section(style="height: 300px; background-color: blue; display: flex; justify-content: center; align-items: center; font-size: 60px;")
+        | TOP SECTION
+
+    section.blog-content.blog
+        .blog-content__left
+            aside.blog__article-titles#blog__article-titles
+                ul.blog__article-list#blog__article-list
+                    each article, index in articles
+                        li(id=`${index}`).blog__article-title
+                            a(href=`#${article.title}`).blog__article-link= article.title
+
+                .blog__article-adaptive-btn#blog__article-adaptive-btn
+
+        .blog-content__right
+            each article, index in articles
+                a(name=`${article.title}`)
+                .blog__article(data-idtitle=`${index}`)
+                    .blog__title= article.title
+                    .blog__date= article.date
+                    .blog__text.simple-text= article.body
+
+    //- include ../common/footer
+    //- +footer('blog')
